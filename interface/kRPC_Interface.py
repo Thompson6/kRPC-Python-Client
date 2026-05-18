@@ -1,5 +1,6 @@
 import json
 import krpc
+import time
 
 # ------------------------------------------------------------------------------------------------
 # Load configuration from a JSON file so I don't leak sensitive information. Again.
@@ -28,6 +29,8 @@ conn = krpc.connect(
 )
 
 vessel = conn.space_center.active_vessel
+
+refframe = vessel.orbit.body.reference_frame
 
 flight_info = vessel.flight()
 
@@ -66,6 +69,12 @@ static_air_temperature = conn.add_stream(getattr, flight_info, "static_air_tempe
 
 def abort_mission():
     vessel.control.abort = True
+
+def toggle_gear():
+    if vessel.control.gear:
+        vessel.control.gear = False
+    else:
+        vessel.control.gear = True
 
 
 # while True:

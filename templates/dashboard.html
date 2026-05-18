@@ -6,12 +6,50 @@
 
     </form></html"POST" action="/abort/">
 <body>
-    <font size="42">Buttons!</font><br>
+    <font size="42">Not buttons!</font><br>
     <br>
-</body>
+
 <form method="POST" action="/abort/">
-    <button style="height: 50px; width: 150px" type="submit">
-        <font size="5">Abort</font>
+    <button style="height: 50px; width: 300px" type="submit">
+        <font size="5">Activate FTS</font>
     </button>
 </form>
+<br>
+<form method="POST" action="/gear/">
+    <button style="height: 50px; width: 300px" type="submit">
+        <font size="5">Toggle Landing Gear</font>
+    </button>
+</form>
+<p>Altitude: <span id="altitude">0</span></p>
+<p>Heading: <span id="heading">0</span></p>
+<p>Pitch: <span id="pitch">0</span></p>
+<p>Gforce: <span id="gforce">0</span></p>
+<script>
+
+async function updateTelemetry() {
+
+    const response = await fetch("/telemetry");
+    const data = await response.json();
+
+    document.getElementById("altitude").textContent =
+        data.altitude.toFixed(1);
+
+    document.getElementById("heading").textContent =
+        data.heading.toFixed(1);
+
+    document.getElementById("pitch").textContent =
+        data.pitch.toFixed(1);
+
+    document.getElementById("gforce").textContent =
+        data.gforce.toFixed(1);
+}
+
+// Update 5 times per second
+setInterval(updateTelemetry, 200);
+
+// Run immediately on page load
+updateTelemetry();
+
+</script>
+</body>
 </html>
