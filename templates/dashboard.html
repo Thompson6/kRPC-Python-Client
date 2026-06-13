@@ -6,7 +6,7 @@
         <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='dashboard.css') }}">
     </head>
 <body>
-    <font size="42">Not buttons!</font><br>
+    <font class="title" size="42">Dashboard</font><br>
     <br>
 
 <form method="POST" action="/abort">
@@ -20,10 +20,52 @@
         <font size="5">Toggle Landing Gear</font>
     </button>
 </form>
-<p>Altitude: <span id="altitude">0</span> m</p>
-<p>Heading: <span id="heading">0</span>*</p>
-<p>Pitch: <span id="pitch">0</span>*</p>
-<p>Gforce: <span id="gforce">0</span> g</p>
+<div class="s1-telemetry">
+    <div class="s1-telemetry-header">
+        <p>Stage 1 Telemetry</p>
+    </div>
+    <div class="s1-telemetry-box">
+        <p class="s1-altitude">
+            <span class="left-text">Altitude</span>
+            <span class="right-text" id="s1-altitude">0</span>
+        </p>
+        <p class="s1-heading">
+            <span class="left-text">Heading</span> 
+            <span class="right-text" id="s1-heading">0</span>
+        </p>
+        <p class="s1-pitch">
+            <span class="left-text">Pitch</span>
+            <span class="right-text" id="s1-pitch">0</span>
+        </p>
+        <p class="s1-gforce">
+            <span class="left-text">Gforce</span>
+            <span class="right-text" id="s1-gforce">0</span>
+        </p>
+    </div>
+</div>
+<div class="s2-telemetry">
+    <div class="s2-telemetry-header">
+        <p>Stage 2 Telemetry</p>
+    </div>
+    <div class="s2-telemetry-box">
+        <p class="s2-altitude">
+            <span class="left-text">Altitude</span>
+            <span class="right-text" id="s2-altitude">0</span>
+        </p>
+        <p class="s2-heading">
+            <span class="left-text">Heading</span>
+            <span class="right-text" id="s2-heading">0</span>
+        </p>
+        <p class="s2-pitch">
+            <span class="left-text">Pitch</span>
+            <span class="right-text" id="s2-pitch">0</span>
+        </p>
+        <p class="s2-gforce">
+            <span class="left-text">Gforce</span>
+            <span class="right-text" id="s2-gforce">0</span>
+        </p>
+    </div>
+</div>
 <script>
 
 async function updateTelemetry() {
@@ -31,17 +73,17 @@ async function updateTelemetry() {
     const response = await fetch("/telemetry");
     const data = await response.json();
 
-    document.getElementById("altitude").textContent =
-        data.altitude.toFixed(0);
+    document.getElementById("s1-altitude").textContent =
+        data.altitude.toFixed(0) + " m";
 
-    document.getElementById("heading").textContent =
-        data.heading.toFixed(3);
+    document.getElementById("s1-heading").textContent =
+        data.heading.toFixed(3) + "*";
 
-    document.getElementById("pitch").textContent =
-        data.pitch.toFixed(3);
+    document.getElementById("s1-pitch").textContent =
+        data.pitch.toFixed(3) + "*";
 
-    document.getElementById("gforce").textContent =
-        data.gforce.toFixed(6);
+    document.getElementById("s1-gforce").textContent =
+        data.gforce.toFixed(6) + " g";
 }
 
 setInterval(updateTelemetry, 0);

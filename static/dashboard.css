@@ -1,3 +1,80 @@
 body {
     background-color: white;
 }
+
+/* Affects both telemetry-header and telemetry-box */
+.s1-telemetry {
+    position: absolute;
+    top: 75px;
+    left: 500px;
+    width: 400px;
+
+    animation-name: slideDown;
+    animation-duration: .75s;
+    animation-timing-function: ease;
+}
+
+.s2-telemetry {
+    position: absolute;
+    top: 75px;
+    left: 975px;
+    width: 400px;
+
+    opacity: 0;
+    animation-name: slideDown;
+    animation-duration: .75s;
+    animation-delay: .075s;
+    animation-timing-function: ease;
+    animation-fill-mode: both;
+}
+
+.s1-telemetry-header, .s2-telemetry-header {
+    border: 2px  solid;
+    border-bottom: none;
+    margin: 0px 0px 0px 0px;
+    min-height: 50px;
+    background-color: lightgray;
+    width: fit-content;
+}
+
+.s1-telemetry-box, .s2-telemetry-box {
+    border: 2px solid;
+    margin: 0px 0px 0px 0px;
+    padding: 20px;
+    background-color: lightgray;
+    min-height: 500px;
+}
+
+.s1-altitude, .s1-heading, .s1-pitch, .s1-gforce {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.s2-altitude, .s2-heading, .s2-pitch, .s2-gforce {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.s1-telemetry p, .s2-telemetry p {
+    font-family: 'Arial Rounded MT';
+    font-size: 30px;
+    margin: 10px;
+}
+
+button {
+    font-family: 'Arial Rounded MT';
+    background-color: lightgray;
+}
+
+@keyframes slideDown {
+    from {
+        transform: translateY(-50%);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
