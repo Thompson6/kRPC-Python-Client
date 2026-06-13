@@ -10,11 +10,12 @@ from interface import kRPC_Interface as ship
 app = Flask(__name__)
 app.config["SECRET_KEY"] = "jimmy"
 
-
+# User facing routes end with slashes
 @app.route("/dashboard/", methods=["GET", "POST"])
 def home():
     return render_template("dashboard.html")
 
+# Utilitarian routes do not end with slashes
 @app.route("/telemetry")
 def telemetry():
 
@@ -27,16 +28,16 @@ def telemetry():
 
     return jsonify(data)
 
-@app.route("/abort/", methods=["GET", "POST"])
+@app.route("/abort")
 def abort_page():
     ship.abort_mission()
     return redirect(url_for("home"))
 
-@app.route("/gear/", methods=["GET", "POST"])
+@app.route("/gear")
 def gear_page():
     ship.toggle_gear()
     return redirect(url_for("home"))
-
+    
 
 if __name__ == "__main__":
     app.run()

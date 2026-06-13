@@ -75,7 +75,7 @@ def toggle_gear():
         vessel.control.gear = False
     else:
         vessel.control.gear = True
-
+        
 
 # while True:
 #     print("--- Current Flight Parameters ---")
@@ -103,4 +103,3 @@ def toggle_gear():
 #     print(f"Anti-Radial Direction: {anti_radial()}")
 #     print(f"Total Air Temperature: {total_air_temperature()}")
 #     print(f"Static Air Temperature: {static_air_temperature()}")
-#     time.sleep(0.1)

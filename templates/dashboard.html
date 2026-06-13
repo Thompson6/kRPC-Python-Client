@@ -4,7 +4,6 @@
         <meta charset="UTF-8" />
         <title>Dashboard</title>
 
-    </form></html"POST" action="/abort/">
 <body>
     <font size="42">Not buttons!</font><br>
     <br>
@@ -20,10 +19,10 @@
         <font size="5">Toggle Landing Gear</font>
     </button>
 </form>
-<p>Altitude: <span id="altitude">0</span></p>
-<p>Heading: <span id="heading">0</span></p>
-<p>Pitch: <span id="pitch">0</span></p>
-<p>Gforce: <span id="gforce">0</span></p>
+<p>Altitude: <span id="altitude">0</span> m</p>
+<p>Heading: <span id="heading">0</span>*</p>
+<p>Pitch: <span id="pitch">0</span>*</p>
+<p>Gforce: <span id="gforce">0</span> g</p>
 <script>
 
 async function updateTelemetry() {
@@ -32,20 +31,19 @@ async function updateTelemetry() {
     const data = await response.json();
 
     document.getElementById("altitude").textContent =
-        data.altitude.toFixed(1);
+        data.altitude.toFixed(0);
 
     document.getElementById("heading").textContent =
-        data.heading.toFixed(1);
+        data.heading.toFixed(3);
 
     document.getElementById("pitch").textContent =
-        data.pitch.toFixed(1);
+        data.pitch.toFixed(3);
 
     document.getElementById("gforce").textContent =
-        data.gforce.toFixed(1);
+        data.gforce.toFixed(6);
 }
 
-// Update 5 times per second
-setInterval(updateTelemetry, 200);
+setInterval(updateTelemetry, 0);
 
 // Run immediately on page load
 updateTelemetry();
