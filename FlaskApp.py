@@ -28,12 +28,12 @@ def telemetry():
 
     return jsonify(data)
 
-@app.route("/abort", methods=["GET"])
+@app.route("/abort", methods=["GET", "POST"])
 def abort_page():
     ship.abort_mission()
     return redirect(url_for("home"))
 
-@app.route("/gear", methods=["GET"])
+@app.route("/gear", methods=["GET", "POST"])
 def gear_page():
     ship.toggle_gear()
     return redirect(url_for("home"))
