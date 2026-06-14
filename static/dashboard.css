@@ -7,16 +7,16 @@ body {
     background-color: white;
 }
 
+.title {
+    font-family: 'Codec Pro';
+}
+
 /* Affects both telemetry-header and telemetry-box */
 .s1-telemetry {
     position: absolute;
     top: 75px;
     left: 500px;
     width: 400px;
-
-    /*animation-name: slideDown;
-    animation-duration: .75s;
-    animation-timing-function: ease;*/
 }
 
 .s2-telemetry {
@@ -25,15 +25,8 @@ body {
     left: 975px;
     width: 400px;
 
-    opacity: 0;
     animation-delay: .075s;
     animation-fill-mode: both;
-    /*opacity: 0;
-    animation-name: slideDown;
-    animation-duration: .75s;
-    animation-delay: .075s;
-    animation-timing-function: ease;
-    animation-fill-mode: both;*/
 }
 
 .s1-telemetry-header, .s2-telemetry-header {
