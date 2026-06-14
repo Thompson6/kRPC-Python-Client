@@ -43,7 +43,7 @@ def root():
 def telemetry():
     
     data = {
-        "altitude": ship.surface_altitude(),
+        "altitude": ship.altitude(),
         "heading": ship.heading(),
         "pitch": ship.pitch(),
         "gforce": ship.g_force()

@@ -35,7 +35,7 @@ try:
     
     flight_info = vessel.flight()
     
-    
+    altitude = conn.add_stream(getattr, flight_info, "mean_altitude")
     speed = conn.add_stream(getattr, flight_info, "speed")
     surface_altitude = conn.add_stream(getattr, flight_info, "surface_altitude")
     heading = conn.add_stream(getattr, flight_info, "heading")
