@@ -16,9 +16,13 @@ def home():
     
     cookie = request.cookies.get("return_cookie")
     if not cookie:
-        print("This is their first time")
-    response = make_response(render_template("dashboard.html"))
-    response.delete_cookie("return_cookie")
+        print("This is their first time") # User isn't coming from a function route
+        response = make_response(render_template("dashboard.html", animate = True))
+    else: 
+        # User reloaded the page from a route so we don't need to bother playing the animation
+        response = make_response(render_template("dashboard.html", animate = False))
+        response.delete_cookie("return_cookie")
+        
     return response
 
 # Root route redirects to dashboard for convenience

@@ -114,7 +114,9 @@ async function runAnimation() {
     element2.classList.add('animation');
 }
 
-runAnimation();
+if ("{{ animate }}" == "True") {
+        runAnimation();
+      }
 
 </script>
 </body>
