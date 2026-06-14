@@ -45,13 +45,13 @@ body {
     min-height: 500px;
 }
 
-.s1-altitude, .s1-heading, .s1-pitch, .s1-gforce {
+.s1-state, .s1-altitude, .s1-heading, .s1-pitch, .s1-gforce {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-.s2-altitude, .s2-heading, .s2-pitch, .s2-gforce {
+.s2-state, .s2-altitude, .s2-heading, .s2-pitch, .s2-gforce {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -61,6 +61,13 @@ body {
     font-family: 'Arial Rounded MT';
     font-size: 30px;
     margin: 10px;
+}
+
+.s1-telemetry-state, .s2-telemetry-state {
+    border: 2px solid;
+    margin: 15px 0px 0px 0px;
+    padding: 0px 20px 0px 20px;
+    background-color: lightgray;
 }
 
 button {

@@ -20,6 +20,7 @@
         <font size="5">Toggle Landing Gear</font>
     </button>
 </form>
+
 <div class="s1-telemetry">
     <div class="s1-telemetry-header">
         <p>Stage 1 Telemetry</p>
@@ -42,7 +43,14 @@
             <span class="right-text" id="s1-gforce">0</span>
         </p>
     </div>
+    <div class="s1-telemetry-state">
+        <p class="s1-state">
+            <span class="left-text">State</span>
+            <span class="right-text" id="s1-state">TBD</span>
+        </p>
+    </div>
 </div>
+
 <div class="s2-telemetry">
     <div class="s2-telemetry-header">
         <p>Stage 2 Telemetry</p>
@@ -65,7 +73,14 @@
             <span class="right-text" id="s2-gforce">0</span>
         </p>
     </div>
+    <div class="s2-telemetry-state">
+        <p class="s2-state">
+            <span class="left-text">State</span>
+            <span class="right-text" id="s2-state">TBD</span>
+        </p>
+    </div>
 </div>
+
 <script>
 
 async function updateTelemetry() {
