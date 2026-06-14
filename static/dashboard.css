@@ -9,9 +9,9 @@ body {
     left: 500px;
     width: 400px;
 
-    animation-name: slideDown;
+    /*animation-name: slideDown;
     animation-duration: .75s;
-    animation-timing-function: ease;
+    animation-timing-function: ease;*/
 }
 
 .s2-telemetry {
@@ -21,11 +21,14 @@ body {
     width: 400px;
 
     opacity: 0;
+    animation-delay: .075s;
+    animation-fill-mode: both;
+    /*opacity: 0;
     animation-name: slideDown;
     animation-duration: .75s;
     animation-delay: .075s;
     animation-timing-function: ease;
-    animation-fill-mode: both;
+    animation-fill-mode: both;*/
 }
 
 .s1-telemetry-header, .s2-telemetry-header {
@@ -84,4 +87,10 @@ button {
         transform: translateY(0);
         opacity: 1;
     }
+}
+
+.animation {
+    animation-name: slideDown;
+    animation-duration: .75s;
+    animation-timing-function: ease;
 }

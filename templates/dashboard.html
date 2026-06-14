@@ -106,6 +106,16 @@ setInterval(updateTelemetry, 0);
 // Run immediately on page load
 updateTelemetry();
 
+async function runAnimation() {
+    const element = document.querySelector('.s1-telemetry');
+    element.classList.add('animation');
+
+    const element2 = document.querySelector('.s2-telemetry');
+    element2.classList.add('animation');
+}
+
+runAnimation();
+
 </script>
 </body>
 </html>
