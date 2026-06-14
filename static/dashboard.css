@@ -1,3 +1,8 @@
+@font-face{
+    font-family: 'Codec Pro';
+    src: url("/static/fonts/codec-pro.regular.ttf") format("truetype");
+    }
+
 body {
     background-color: white;
 }
@@ -61,7 +66,7 @@ body {
 }
 
 .s1-telemetry p, .s2-telemetry p {
-    font-family: 'Arial Rounded MT';
+    font-family: 'Codec Pro';
     font-size: 30px;
     margin: 10px;
 }
@@ -74,7 +79,7 @@ body {
 }
 
 button {
-    font-family: 'Arial Rounded MT';
+    font-family: 'Codec Pro';
     background-color: lightgray;
 }
 
