@@ -15,6 +15,11 @@ app.config["SECRET_KEY"] = "jimmy"
 def home():
     return render_template("dashboard.html")
 
+# Root route redirects to dashboard for convenience
+@app.route("/", methods = ["GET"])
+def root():
+    return redirect(url_for("home"))
+
 # Utilitarian routes do not end with slashes
 @app.route("/telemetry")
 def telemetry():
