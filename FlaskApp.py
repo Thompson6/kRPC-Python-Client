@@ -5,10 +5,18 @@ import json
 from flask_wtf import FlaskForm
 from wtforms import SubmitField
 
+from waitress import serve
+
 from interface import kRPC_Interface as ship
 
+with open("config.json", "r") as f:
+    config = json.load(f)
+
+secret_key = config["secret_key"]
+web_port = config["web_port"]
+
 app = Flask(__name__)
-app.config["SECRET_KEY"] = "jimmy"
+app.config["SECRET_KEY"] = secret_key
 
 # User facing routes end with slashes
 @app.route("/dashboard/", methods=["GET", "POST"])
@@ -68,4 +76,4 @@ def add_return_cookie(input):
     return response
 
 if __name__ == "__main__":
-    app.run()
+    serve(app, listen=f'*:{web_port}')
