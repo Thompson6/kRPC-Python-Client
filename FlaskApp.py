@@ -13,7 +13,13 @@ app.config["SECRET_KEY"] = "jimmy"
 # User facing routes end with slashes
 @app.route("/dashboard/", methods=["GET", "POST"])
 def home():
-    return render_template("dashboard.html")
+    
+    cookie = request.cookies.get("return_cookie")
+    if not cookie:
+        print("This is their first time")
+    response = make_response(render_template("dashboard.html"))
+    response.delete_cookie("return_cookie")
+    return response
 
 # Root route redirects to dashboard for convenience
 @app.route("/", methods = ["GET"])
@@ -23,7 +29,7 @@ def root():
 # Utilitarian routes do not end with slashes
 @app.route("/telemetry")
 def telemetry():
-
+    
     data = {
         "altitude": ship.surface_altitude(),
         "heading": ship.heading(),
@@ -35,14 +41,27 @@ def telemetry():
 
 @app.route("/abort", methods=["GET", "POST"])
 def abort_page():
-    ship.abort_mission()
-    return redirect(url_for("home"))
+    try:
+        ship.abort_mission()
+    except NameError:
+        print("We didn't have a ship")
+    response = add_return_cookie(redirect(url_for("home")))
+    return response
 
 @app.route("/gear", methods=["GET", "POST"])
 def gear_page():
-    ship.toggle_gear()
-    return redirect(url_for("home"))
+    try:
+        ship.toggle_gear()
+    except NameError:
+        print("We didn't have a ship")
+    response = add_return_cookie((redirect(url_for("home"))))
+    return response
     
+def add_return_cookie(input):
+    response = make_response(input)
+    response.set_cookie("return_cookie", "value")
+    print("Set a return cookie")
+    return response
 
 if __name__ == "__main__":
     app.run()
