@@ -7,7 +7,10 @@ from wtforms import SubmitField
 
 from waitress import serve
 
-from interface import kRPC_Interface as ship
+try:
+    from interface import kRPC_Interface as ship
+except:
+    ship = None
 
 with open("config.json", "r") as f:
     config = json.load(f)
@@ -53,19 +56,15 @@ def telemetry():
 
 @app.route("/abort", methods=["GET", "POST"])
 def abort_page():
-    try:
+    if ship:
         ship.abort_mission()
-    except NameError:
-        print("We didn't have a ship")
     response = add_return_cookie(redirect(url_for("home")))
     return response
 
 @app.route("/gear", methods=["GET", "POST"])
 def gear_page():
-    try:
+    if ship:
         ship.toggle_gear()
-    except NameError:
-        print("We didn't have a ship")
     response = add_return_cookie((redirect(url_for("home"))))
     return response
     

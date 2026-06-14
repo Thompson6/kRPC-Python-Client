@@ -24,58 +24,52 @@ else:
 # Establish variables for connection
 # ------------------------------------------------------------------------------------------------
 
-try:
-    conn = krpc.connect(
-        name=CONNECTION_NAME, address=ADDRESS, rpc_port=PORTS[0], stream_port=PORTS[1]
-    )
+conn = krpc.connect(
+    name=CONNECTION_NAME, address=ADDRESS, rpc_port=PORTS[0], stream_port=PORTS[1]
+)
 
-    vessel = conn.space_center.active_vessel
-    
-    refframe = vessel.orbit.body.reference_frame
-    
-    flight_info = vessel.flight()
-    
-    
-    speed = conn.add_stream(getattr, flight_info, "speed")
-    surface_altitude = conn.add_stream(getattr, flight_info, "surface_altitude")
-    heading = conn.add_stream(getattr, flight_info, "heading")
-    pitch = conn.add_stream(getattr, flight_info, "pitch")
-    bedrock_altitude = conn.add_stream(getattr, flight_info, "bedrock_altitude")
-    latitude = conn.add_stream(getattr, flight_info, "latitude")
-    longitude = conn.add_stream(getattr, flight_info, "longitude")
-    vertical_speed = conn.add_stream(getattr, flight_info, "vertical_speed")
-    g_force = conn.add_stream(getattr, flight_info, "g_force")
-    elevation = conn.add_stream(getattr, flight_info, "elevation")
-    direction = conn.add_stream(getattr, flight_info, "direction")
-    roll = conn.add_stream(getattr, flight_info, "roll")
-    atmosphere_density = conn.add_stream(getattr, flight_info, "atmosphere_density")
-    static_pressure = conn.add_stream(getattr, flight_info, "static_pressure")
-    lift = conn.add_stream(getattr, flight_info, "lift")
-    
-    rotation = conn.add_stream(getattr, flight_info, "rotation")
-    prograde = conn.add_stream(getattr, flight_info, "prograde")
-    retrograde = conn.add_stream(getattr, flight_info, "retrograde")
-    normal = conn.add_stream(getattr, flight_info, "normal")
-    anti_normal = conn.add_stream(getattr, flight_info, "anti_normal")
-    radial = conn.add_stream(getattr, flight_info, "radial")
-    anti_radial = conn.add_stream(getattr, flight_info, "anti_radial")
-    total_air_temperature = conn.add_stream(getattr, flight_info, "total_air_temperature")
-    static_air_temperature = conn.add_stream(getattr, flight_info, "static_air_temperature")
-    
-    
-    
-    # ------------------------------------------------------------------------------------------------
-    # Functions to access variables from external script
-    # ------------------------------------------------------------------------------------------------
-    
-    def abort_mission():
-        vessel.control.abort = True
-    
-    def toggle_gear():
-        if vessel.control.gear:
-            vessel.control.gear = False
-        else:
-            vessel.control.gear = True
+vessel = conn.space_center.active_vessel
 
-except OSError:
-    print("FAILED TO MAKE CONNECTION")
+refframe = vessel.orbit.body.reference_frame
+
+flight_info = vessel.flight()
+
+
+speed = conn.add_stream(getattr, flight_info, "speed")
+surface_altitude = conn.add_stream(getattr, flight_info, "surface_altitude")
+heading = conn.add_stream(getattr, flight_info, "heading")
+pitch = conn.add_stream(getattr, flight_info, "pitch")
+bedrock_altitude = conn.add_stream(getattr, flight_info, "bedrock_altitude")
+latitude = conn.add_stream(getattr, flight_info, "latitude")
+longitude = conn.add_stream(getattr, flight_info, "longitude")
+vertical_speed = conn.add_stream(getattr, flight_info, "vertical_speed")
+g_force = conn.add_stream(getattr, flight_info, "g_force")
+elevation = conn.add_stream(getattr, flight_info, "elevation")
+direction = conn.add_stream(getattr, flight_info, "direction")
+roll = conn.add_stream(getattr, flight_info, "roll")
+atmosphere_density = conn.add_stream(getattr, flight_info, "atmosphere_density")
+static_pressure = conn.add_stream(getattr, flight_info, "static_pressure")
+lift = conn.add_stream(getattr, flight_info, "lift")
+
+rotation = conn.add_stream(getattr, flight_info, "rotation")
+prograde = conn.add_stream(getattr, flight_info, "prograde")
+retrograde = conn.add_stream(getattr, flight_info, "retrograde")
+normal = conn.add_stream(getattr, flight_info, "normal")
+anti_normal = conn.add_stream(getattr, flight_info, "anti_normal")
+radial = conn.add_stream(getattr, flight_info, "radial")
+anti_radial = conn.add_stream(getattr, flight_info, "anti_radial")
+total_air_temperature = conn.add_stream(getattr, flight_info, "total_air_temperature")
+static_air_temperature = conn.add_stream(getattr, flight_info, "static_air_temperature")
+
+# ------------------------------------------------------------------------------------------------
+# Functions to access variables from external script
+# ------------------------------------------------------------------------------------------------
+
+def abort_mission():
+    vessel.control.abort = True
+
+def toggle_gear():
+    if vessel.control.gear:
+        vessel.control.gear = False
+    else:
+        vessel.control.gear = True
