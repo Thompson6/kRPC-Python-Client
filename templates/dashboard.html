@@ -22,7 +22,7 @@
     </button>
 </form>
 
-<div class="s1-telemetry">
+<div class="s1-telemetry animated">
     <div class="s1-telemetry-header">
         <p>Stage 1 Telemetry</p>
     </div>
@@ -52,7 +52,7 @@
     </div>
 </div>
 
-<div class="s2-telemetry">
+<div class="s2-telemetry animated">
     <div class="s2-telemetry-header">
         <p>Stage 2 Telemetry</p>
     </div>
@@ -108,11 +108,11 @@ setInterval(updateTelemetry, 0);
 updateTelemetry();
 
 async function runAnimation() {
-    const element = document.querySelector('.s1-telemetry');
-    element.classList.add('animation');
+    const elements = document.querySelectorAll('.animated');
 
-    const element2 = document.querySelector('.s2-telemetry');
-    element2.classList.add('animation');
+    elements.forEach(element => {
+        element.classList.add('animation');
+    });
 }
 
 if ("{{ animate }}" == "True") {
