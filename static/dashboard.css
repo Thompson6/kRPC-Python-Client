@@ -96,7 +96,7 @@ body {
     width: 400px;
     border: 2px solid;
     border-radius: 50%;
-    animation-delay: calc(var(--engine-delay) * 5 + var(--additional-engine-delay));
+    animation-delay: calc(var(--engine-delay) * 8 + var(--additional-engine-delay));
     animation-fill-mode: both;
 }
 

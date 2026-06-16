@@ -67,6 +67,14 @@ def gear_page():
         ship.toggle_gear()
     response = add_return_cookie((redirect(url_for("home"))))
     return response
+
+@app.route("/engine/<stage>/<engine_number>", methods=["GET", "POST"])
+def engine_page(stage, engine_number):
+    if ship:
+        ship.toggle_engine(stage, engine_number)
+    response = f"Toggled stage {stage} engine {engine_number}"
+    # response = add_return_cookie((redirect(url_for("home"))))
+    return response
     
 def add_return_cookie(input):
     response = make_response(input)

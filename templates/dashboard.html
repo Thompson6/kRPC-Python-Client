@@ -54,13 +54,13 @@
 
 <div class="s1-engines">
     <div class="s1-engine-outline fade-in"></div>
-    <button class="s1-e7 s1-engine fade-in">7</button>
-    <button class="s1-e1 s1-engine fade-in">1</button>
-    <button class="s1-e2 s1-engine fade-in">2</button>
-    <button class="s1-e3 s1-engine fade-in">3</button>
-    <button class="s1-e4 s1-engine fade-in">4</button>
-    <button class="s1-e5 s1-engine fade-in">5</button>
-    <button class="s1-e6 s1-engine fade-in">6</button>
+    <button onclick="window.location.href = '{{ url_for('engine_page', stage=1, engine_number=1) }}' ; " class="s1-e1 s1-engine fade-in">1</button>
+    <button onclick="window.location.href = '{{ url_for('engine_page', stage=1, engine_number=2) }}' ; " class="s1-e2 s1-engine fade-in">2</button>
+    <button onclick="window.location.href = '{{ url_for('engine_page', stage=1, engine_number=3) }}' ; " class="s1-e3 s1-engine fade-in">3</button>
+    <button onclick="window.location.href = '{{ url_for('engine_page', stage=1, engine_number=4) }}' ; " class="s1-e4 s1-engine fade-in">4</button>
+    <button onclick="window.location.href = '{{ url_for('engine_page', stage=1, engine_number=5) }}' ; " class="s1-e5 s1-engine fade-in">5</button>
+    <button onclick="window.location.href = '{{ url_for('engine_page', stage=1, engine_number=6) }}' ; " class="s1-e6 s1-engine fade-in">6</button>
+    <button onclick="window.location.href = '{{ url_for('engine_page', stage=1, engine_number=7) }}' ; " class="s1-e7 s1-engine fade-in">7</button>
 </div>
 
 <div class="s2-telemetry slide-down">
