@@ -10,18 +10,6 @@
     <font class="title" size="42">Dashboard</font><br>
     <br>
 
-<form method="POST" action="/abort">
-    <button style="height: 50px; width: 300px" type="submit">
-        <font size="5">Activate FTS</font>
-    </button>
-</form>
-<br>
-<form method="POST" action="/gear">
-    <button style="height: 50px; width: 300px" type="submit">
-        <font size="5">Toggle Landing Gear</font>
-    </button>
-</form>
-
 <div class="s1-telemetry slide-down">
     <div class="s1-telemetry-header">
         <p>Stage 1 Telemetry</p>
@@ -50,6 +38,16 @@
             <span class="right-text" id="s1-state">TBD</span>
         </p>
     </div>
+    <form method="POST" action="/abort">
+        <button class="s1-fts" type="submit">
+            <font>FTS</font>
+        </button>
+    </form>
+    <form method="POST" action="/gear">
+        <button class="s1-gear" type="submit">
+            <font>Gear</font>
+        </button>
+    </form>
 </div>
 
 <div class="s1-engines">

@@ -48,7 +48,7 @@ body {
     margin: 0px 0px 0px 0px;
     padding: 20px;
     background-color: lightgray;
-    min-height: 500px;
+    min-height: 400px;
 }
 
 .s1-state, .s1-altitude, .s1-heading, .s1-pitch, .s1-gforce {
@@ -76,6 +76,24 @@ body {
     background-color: lightgray;
 }
 
+.s1-fts {
+    text-align: center;
+    font-size: 30px;
+    width: 120px;
+    min-height: 50px;
+    margin: 15px 0px 0px 0px;
+}
+
+.s1-gear {
+    position: absolute;
+    text-align: center;
+    font-size: 30px;
+    width: 120px;
+    min-height: 50px;
+    margin: 15px 0px 0px 0px;
+    transform: translate(140px, -65px)
+}
+
 .s1-engines {
     margin: 50px 0px 0px 0px;
     height: 400px;
@@ -83,7 +101,7 @@ body {
     border: 0px solid;
     border-radius: 50%;
     position: absolute;
-    top: 750px;
+    top: 690px;
     left: 500px;
     display: flex;
     justify-content: center;
