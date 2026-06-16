@@ -76,21 +76,13 @@ def abort_mission():
     vessel.control.abort = True
 
 def toggle_gear():
-    if vessel.control.gear:
-        vessel.control.gear = False
-    else:
-        vessel.control.gear = True
+    vessel.control.gear = not vessel.control.gear
 
-
-# ------------------------------------------------------------------------------------------------
-#                           References to individual vessel parts
-# ------------------------------------------------------------------------------------------------
-
-parts = vessel.parts
 
 # ------------------------------------------------------------------------------------------------
 #                              Functions to work with parts
 # ------------------------------------------------------------------------------------------------
 
 def toggle_engine(stage, engine_number):
-    return
+    engine = vessel.parts.with_tag(f"s{stage}e{engine_number}")[0].engine
+    engine.active = not engine.active

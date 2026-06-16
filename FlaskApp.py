@@ -72,8 +72,7 @@ def gear_page():
 def engine_page(stage, engine_number):
     if ship:
         ship.toggle_engine(stage, engine_number)
-    response = f"Toggled stage {stage} engine {engine_number}"
-    # response = add_return_cookie((redirect(url_for("home"))))
+    response = add_return_cookie((redirect(url_for("home"))))
     return response
     
 def add_return_cookie(input):
