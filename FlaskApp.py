@@ -1,3 +1,4 @@
+from interface.kRPC_Interface import get_engine_status
 from flask import Flask, make_response, redirect, render_template, request, url_for, jsonify
 import datetime
 import json
@@ -49,7 +50,8 @@ def telemetry():
         "altitude": ship.altitude(),
         "heading": ship.heading(),
         "pitch": ship.pitch(),
-        "gforce": ship.g_force()
+        "gforce": ship.g_force(),
+        "s1engines": ship.get_engine_status()
     }
 
     return jsonify(data)
