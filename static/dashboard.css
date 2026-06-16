@@ -3,6 +3,11 @@
     src: url("/static/fonts/codec-pro.regular.ttf") format("truetype");
     }
 
+:root {
+    --engine-delay: 0.075s;
+    --additional-engine-delay: 0.3s;
+}
+
 body {
     background-color: white;
 }
@@ -71,9 +76,88 @@ body {
     background-color: lightgray;
 }
 
+.s1-engines {
+    margin: 50px 0px 0px 0px;
+    height: 400px;
+    width: 400px;
+    border: 0px solid;
+    border-radius: 50%;
+    position: absolute;
+    top: 750px;
+    left: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.s1-engine-outline {
+    margin: 0px 0px 0px 0px;
+    height: 400px;
+    width: 400px;
+    border: 2px solid;
+    border-radius: 50%;
+    animation-delay: calc(var(--engine-delay) * 5 + var(--additional-engine-delay));
+    animation-fill-mode: both;
+}
+
+.s1-engine {
+    height: 110px;
+    width: 110px;
+    border: 2px solid;
+    border-radius: 50%;
+    position: absolute;
+
+    font-size: 50px;
+}
+
+.s1-e1 {
+    transform: translateY(-125px);
+    animation-delay: calc(var(--engine-delay) * 1 + var(--additional-engine-delay));
+    animation-fill-mode: both;
+}
+
+.s1-e4 {
+    transform: translateY(125px);
+    animation-delay: calc(var(--engine-delay) * 4 + var(--additional-engine-delay));
+    animation-fill-mode: both;
+}
+
+.s1-e2 {
+    transform: translate(105px, -62.5px);
+    animation-delay: calc(var(--engine-delay) * 2 + var(--additional-engine-delay));
+    animation-fill-mode: both;
+}
+
+.s1-e5 {
+    transform: translate(-105px, 62.5px);
+    animation-delay: calc(var(--engine-delay) * 5 + var(--additional-engine-delay));
+    animation-fill-mode: both;
+}
+
+.s1-e3 {
+    transform: translate(105px, 62.5px);
+    animation-delay: calc(var(--engine-delay) * 3 + var(--additional-engine-delay));
+    animation-fill-mode: both;
+}
+
+.s1-e6 {
+    transform: translate(-105px, -62.5px);
+    animation-delay: calc(var(--engine-delay) * 6 + var(--additional-engine-delay));
+    animation-fill-mode: both;
+}
+
+.s1-e7 {
+    animation-delay: calc(var(--engine-delay) * 7 + var(--additional-engine-delay));
+    animation-fill-mode: both;
+}
+
 button {
     font-family: 'Codec Pro';
     background-color: lightgray;
+}
+
+button:active {
+    background-color: darkgray;
 }
 
 @keyframes slideDown {
@@ -87,8 +171,23 @@ button {
     }
 }
 
-.animation {
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.slide-down-animation {
     animation-name: slideDown;
     animation-duration: .75s;
     animation-timing-function: ease;
+}
+
+.fade-in-animation {
+    animation-name: fadeIn;
+    animation-duration: 0.5s;
+    animation-timing-function: ease-out;
 }

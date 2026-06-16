@@ -22,7 +22,7 @@
     </button>
 </form>
 
-<div class="s1-telemetry animated">
+<div class="s1-telemetry slide-down">
     <div class="s1-telemetry-header">
         <p>Stage 1 Telemetry</p>
     </div>
@@ -32,7 +32,7 @@
             <span class="right-text" id="s1-altitude">0 m</span>
         </p>
         <p class="s1-heading">
-            <span class="left-text">Heading</span> 
+            <span class="left-text">Heading</span>
             <span class="right-text" id="s1-heading">0*</span>
         </p>
         <p class="s1-pitch">
@@ -52,7 +52,18 @@
     </div>
 </div>
 
-<div class="s2-telemetry animated">
+<div class="s1-engines">
+    <div class="s1-engine-outline fade-in"></div>
+    <button class="s1-e7 s1-engine fade-in">7</button>
+    <button class="s1-e1 s1-engine fade-in">1</button>
+    <button class="s1-e2 s1-engine fade-in">2</button>
+    <button class="s1-e3 s1-engine fade-in">3</button>
+    <button class="s1-e4 s1-engine fade-in">4</button>
+    <button class="s1-e5 s1-engine fade-in">5</button>
+    <button class="s1-e6 s1-engine fade-in">6</button>
+</div>
+
+<div class="s2-telemetry slide-down">
     <div class="s2-telemetry-header">
         <p>Stage 2 Telemetry</p>
     </div>
@@ -107,17 +118,26 @@ setInterval(updateTelemetry, 0);
 // Run immediately on page load
 updateTelemetry();
 
-async function runAnimation() {
-    const elements = document.querySelectorAll('.animated');
+async function runSlideDownAnimation() {
+    const elements = document.querySelectorAll('.slide-down');
 
     elements.forEach(element => {
-        element.classList.add('animation');
+        element.classList.add('slide-down-animation');
+    });
+}
+
+async function runFadeInAnimation() {
+    const elements = document.querySelectorAll('.fade-in');
+
+    elements.forEach(element => {
+        element.classList.add('fade-in-animation');
     });
 }
 
 if ("{{ animate }}" == "True") {
-        runAnimation();
-      }
+    runSlideDownAnimation();
+    runFadeInAnimation();
+}
 
 </script>
 </body>
