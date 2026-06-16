@@ -169,6 +169,10 @@ body {
     animation-fill-mode: both;
 }
 
+.engine-on {
+    background-color: limegreen;
+}
+
 button {
     font-family: 'Codec Pro';
     background-color: lightgray;
