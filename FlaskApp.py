@@ -5,7 +5,7 @@ import json
 from flask_wtf import FlaskForm
 from wtforms import SubmitField
 
-from gevent.pywsgi import WSGIServer
+from waitress import serve
 
 from flask_socketio import SocketIO, emit
 
@@ -103,4 +103,4 @@ def add_return_cookie(input):
 #     emit('all_engines', engines, broadcast=True)
 
 if __name__ == "__main__":
-    socketio.run(app, host='0.0.0.0', port=5000)
+    serve(app, listen=f'*:{web_port}')
