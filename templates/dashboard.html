@@ -109,16 +109,6 @@ async function updateTelemetry() {
 
     document.getElementById("s1-gforce").textContent =
         data.gforce.toFixed(6) + " g";
-
-    /*for (let i = 0; i < 7; i++) {
-        element = document.getElementById(String(i + 1))
-        if (data.s1engines[i] == true && !element.classList.contains('engine-on')) {
-            element.classList.add('engine-on');
-        }
-        if (data.s1engines[i] == false && element.classList.contains('engine-on')) {
-            element.classList.remove('engine-on');
-        }
-    }*/
 }
 
 setInterval(updateTelemetry, 0);
@@ -148,5 +138,25 @@ if ("{{ animate }}" == "True") {
 }
 
 </script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js" integrity="sha512-q/dWJ3kcmjBLU4Qc47E4A9kTB4m3wuTY7vkFJDTZKjTs8jhyGQnaUrxa0Ytd0ssMZhbNua9hE+E7Qv1j+DyZwA==" crossorigin="anonymous"></script>
+<script type="text/javascript" charset="utf-8">
+
+// Connect
+var socket = io()
+
+// Once we connect, send signal requesting engine status from app
+socket.on('connect', function(){
+  socket.emit('set_engines');
+});
+
+socket.on('all_engines', function(status){
+  // Recieve engine status, break and set
+  document.getElementById("kyledebug").textContent = status;
+});
+
+
+</script>
+
 </body>
 </html>

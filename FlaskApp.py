@@ -1,4 +1,3 @@
-from interface.kRPC_Interface import get_s1_engine_status
 from flask import Flask, make_response, redirect, render_template, request, url_for, jsonify
 import datetime
 import json
@@ -6,7 +5,9 @@ import json
 from flask_wtf import FlaskForm
 from wtforms import SubmitField
 
-from waitress import serve
+from gevent.pywsgi import WSGIServer
+
+from flask_socketio import SocketIO, emit
 
 try:
     from interface import kRPC_Interface as ship
@@ -21,6 +22,8 @@ web_port = config["web_port"]
 
 app = Flask(__name__)
 app.config["SECRET_KEY"] = secret_key
+
+socketio = SocketIO(app)
 
 # User facing routes end with slashes
 @app.route("/dashboard/", methods=["GET", "POST"])
@@ -50,8 +53,7 @@ def telemetry():
         "altitude": ship.altitude(),
         "heading": ship.heading(),
         "pitch": ship.pitch(),
-        "gforce": ship.g_force(),
-        # "s1engines": ship.get_s1_engine_status()
+        "gforce": ship.g_force()
     }
 
     return jsonify(data)
@@ -83,5 +85,14 @@ def add_return_cookie(input):
     print("Set a return cookie")
     return response
 
+@socketio.on('set_engines')
+def broadcast_all_engines():
+    print("HEY WE GOT SOME ENGINES OVER HEREEEE!!!")
+    engines = []
+    for engine in range(7): # Stage hard coded to 1 bc we don't have stage 2 yet
+        status = ship.get_engine_status(1, engine+1)
+        engines.append(status)
+    emit('all_engines', engines, broadcast=True)
+
 if __name__ == "__main__":
-    serve(app, listen=f'*:{web_port}')
+    socketio.run(app)

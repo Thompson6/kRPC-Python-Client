@@ -86,10 +86,8 @@ def toggle_gear():
 def toggle_engine(stage, engine_number):
     engine = vessel.parts.with_tag(f"s{stage}e{engine_number}")[0].engine
     engine.active = not engine.active
+    return engine.active
 
-def get_s1_engine_status():
-    s1_engine_statuses = []   #            We add 1 here because 'range()' starts counting at 0 and we count engines starting with 1
-    for s1engine in range(7): #                      \/
-        engine = vessel.parts.with_tag(f"s1e{s1engine+1}")[0].engine
-        s1_engine_statuses.append(engine.active)
-    return s1_engine_statuses
+def get_engine_status(stage, engine_number):
+    engine = vessel.parts.with_tag(f"s{stage}e{engine_number}")[0].engine
+    return engine.active
