@@ -111,10 +111,75 @@ async function updateTelemetry() {
         data.gforce.toFixed(6) + " g";
 }
 
-setInterval(updateTelemetry, 0);
+ setInterval(updateTelemetry, 10);
+
+async function updateEngineTelemetry() {
+
+    const response = await fetch("/telemetry");
+    const data = await response.json();
+
+    element = document.getElementById("1");
+    if (data.s1e1 == true && !element.classList.contains('engine-on')) {
+        element.classList.add('engine-on');
+    }
+    else if (data.s1e1 == false && element.classList.contains('engine-on')) {
+        element.classList.remove('engine-on');
+    }
+
+    element = document.getElementById("2");
+    if (data.s1e2 == true && !element.classList.contains('engine-on')) {
+        element.classList.add('engine-on');
+    }
+    else if (data.s1e2 == false && element.classList.contains('engine-on')) {
+        element.classList.remove('engine-on');
+    }
+
+    element = document.getElementById("3");
+    if (data.s1e3 == true && !element.classList.contains('engine-on')) {
+        element.classList.add('engine-on');
+    }
+    else if (data.s1e3 == false && element.classList.contains('engine-on')) {
+        element.classList.remove('engine-on');
+    }
+
+    element = document.getElementById("4");
+    if (data.s1e4 == true && !element.classList.contains('engine-on')) {
+        element.classList.add('engine-on');
+    }
+    else if (data.s1e4 == false && element.classList.contains('engine-on')) {
+        element.classList.remove('engine-on');
+    }
+
+    element = document.getElementById("5");
+    if (data.s1e5 == true && !element.classList.contains('engine-on')) {
+        element.classList.add('engine-on');
+    }
+    else if (data.s1e5 == false && element.classList.contains('engine-on')) {
+        element.classList.remove('engine-on');
+    }
+
+    element = document.getElementById("6");
+    if (data.s1e6 == true && !element.classList.contains('engine-on')) {
+        element.classList.add('engine-on');
+    }
+    else if (data.s1e6 == false && element.classList.contains('engine-on')) {
+        element.classList.remove('engine-on');
+    }
+
+    element = document.getElementById("7");
+    if (data.s1e7 == true && !element.classList.contains('engine-on')) {
+        element.classList.add('engine-on');
+    }
+    else if (data.s1e7 == false && element.classList.contains('engine-on')) {
+        element.classList.remove('engine-on');
+    }
+}
+
+setInterval(updateEngineTelemetry, 1000);
 
 // Run immediately on page load
-updateTelemetry();
+    updateTelemetry();
+    updateEngineTelemetry();
 
 async function runSlideDownAnimation() {
     const elements = document.querySelectorAll('.slide-down');
