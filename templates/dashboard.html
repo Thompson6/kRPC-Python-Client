@@ -152,7 +152,16 @@ socket.on('connect', function(){
 
 socket.on('all_engines', function(status){
   // Recieve engine status, break and set
-  document.getElementById("kyledebug").textContent = status;
+    for (let i = 0; i < 7; i++) {
+        element = document.getElementById(String(i + 1))
+        if (status[i] == true && !element.classList.contains('engine-on')) {
+            element.classList.add('engine-on');
+        }
+        else {
+            element.classList.remove('engine-on');
+        }
+    }
+    console.log(status);
 });
 
 
