@@ -55,13 +55,13 @@ def telemetry():
         "pitch": ship.pitch(),
         "gforce": ship.g_force(),
 
-        "s1e1": ship.s1e1_stream(),
-        "s1e2": ship.s1e2_stream(),
-        "s1e3": ship.s1e3_stream(),
-        "s1e4": ship.s1e4_stream(),
-        "s1e5": ship.s1e5_stream(),
-        "s1e6": ship.s1e6_stream(),
-        "s1e7": ship.s1e7_stream(),
+        "s1e1": ship.s1e1_stream() and ship.s1throttle(),
+        "s1e2": ship.s1e2_stream() and ship.s1throttle(),
+        "s1e3": ship.s1e3_stream() and ship.s1throttle(),
+        "s1e4": ship.s1e4_stream() and ship.s1throttle(),
+        "s1e5": ship.s1e5_stream() and ship.s1throttle(),
+        "s1e6": ship.s1e6_stream() and ship.s1throttle(),
+        "s1e7": ship.s1e7_stream() and ship.s1throttle(),
     }
 
     return jsonify(data)

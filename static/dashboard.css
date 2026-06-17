@@ -1,7 +1,11 @@
-@font-face{
-    font-family: 'Codec Pro';
+@font-face {
+    font-family: "Codec Pro";
     src: url("/static/fonts/codec-pro.regular.ttf") format("truetype");
-    }
+}
+@font-face {
+    font-family: "PT Mono";
+    src: url("/static/fonts/PTM55F.ttf") format("truetype");
+}
 
 :root {
     --engine-delay: 0.075s;
@@ -13,7 +17,7 @@ body {
 }
 
 .title {
-    font-family: 'Codec Pro';
+    font-family: "Codec Pro";
 }
 
 /* Affects both telemetry-header and telemetry-box */
@@ -30,12 +34,13 @@ body {
     left: 975px;
     width: 400px;
 
-    animation-delay: .075s;
+    animation-delay: 0.075s;
     animation-fill-mode: both;
 }
 
-.s1-telemetry-header, .s2-telemetry-header {
-    border: 2px  solid;
+.s1-telemetry-header,
+.s2-telemetry-header {
+    border: 2px solid;
     border-bottom: none;
     margin: 0px 0px 0px 0px;
     min-height: 50px;
@@ -43,7 +48,8 @@ body {
     width: fit-content;
 }
 
-.s1-telemetry-box, .s2-telemetry-box {
+.s1-telemetry-box,
+.s2-telemetry-box {
     border: 2px solid;
     margin: 0px 0px 0px 0px;
     padding: 20px;
@@ -51,25 +57,40 @@ body {
     min-height: 400px;
 }
 
-.s1-state, .s1-altitude, .s1-heading, .s1-pitch, .s1-gforce {
+.s1-state,
+.s1-altitude,
+.s1-heading,
+.s1-pitch,
+.s1-gforce {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-.s2-state, .s2-altitude, .s2-heading, .s2-pitch, .s2-gforce {
+.s2-state,
+.s2-altitude,
+.s2-heading,
+.s2-pitch,
+.s2-gforce {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-.s1-telemetry p, .s2-telemetry p {
-    font-family: 'Codec Pro';
+.s1-telemetry p,
+.s2-telemetry p {
+    font-family: "Codec Pro";
     font-size: 30px;
     margin: 10px;
 }
 
-.s1-telemetry-state, .s2-telemetry-state {
+.s1-telemetry .right-text,
+.s2-telemetry .right-text {
+    font-family: "PT Mono";
+}
+
+.s1-telemetry-state,
+.s2-telemetry-state {
     border: 2px solid;
     margin: 15px 0px 0px 0px;
     padding: 0px 20px 0px 20px;
@@ -91,7 +112,7 @@ body {
     width: 120px;
     min-height: 50px;
     margin: 15px 0px 0px 0px;
-    transform: translate(140px, -65px)
+    transform: translate(140px, -65px);
 }
 
 .s1-engines {
@@ -114,7 +135,9 @@ body {
     width: 400px;
     border: 2px solid;
     border-radius: 50%;
-    animation-delay: calc(var(--engine-delay) * 8 + var(--additional-engine-delay));
+    animation-delay: calc(
+        var(--engine-delay) * 8 + var(--additional-engine-delay)
+    );
     animation-fill-mode: both;
 }
 
@@ -130,42 +153,56 @@ body {
 
 .s1-e1 {
     transform: translateY(-125px);
-    animation-delay: calc(var(--engine-delay) * 1 + var(--additional-engine-delay));
+    animation-delay: calc(
+        var(--engine-delay) * 1 + var(--additional-engine-delay)
+    );
     animation-fill-mode: both;
 }
 
 .s1-e4 {
     transform: translateY(125px);
-    animation-delay: calc(var(--engine-delay) * 4 + var(--additional-engine-delay));
+    animation-delay: calc(
+        var(--engine-delay) * 4 + var(--additional-engine-delay)
+    );
     animation-fill-mode: both;
 }
 
 .s1-e2 {
     transform: translate(105px, -62.5px);
-    animation-delay: calc(var(--engine-delay) * 2 + var(--additional-engine-delay));
+    animation-delay: calc(
+        var(--engine-delay) * 2 + var(--additional-engine-delay)
+    );
     animation-fill-mode: both;
 }
 
 .s1-e5 {
     transform: translate(-105px, 62.5px);
-    animation-delay: calc(var(--engine-delay) * 5 + var(--additional-engine-delay));
+    animation-delay: calc(
+        var(--engine-delay) * 5 + var(--additional-engine-delay)
+    );
     animation-fill-mode: both;
 }
 
 .s1-e3 {
     transform: translate(105px, 62.5px);
-    animation-delay: calc(var(--engine-delay) * 3 + var(--additional-engine-delay));
+    animation-delay: calc(
+        var(--engine-delay) * 3 + var(--additional-engine-delay)
+    );
     animation-fill-mode: both;
 }
 
 .s1-e6 {
     transform: translate(-105px, -62.5px);
-    animation-delay: calc(var(--engine-delay) * 6 + var(--additional-engine-delay));
+    animation-delay: calc(
+        var(--engine-delay) * 6 + var(--additional-engine-delay)
+    );
     animation-fill-mode: both;
 }
 
 .s1-e7 {
-    animation-delay: calc(var(--engine-delay) * 7 + var(--additional-engine-delay));
+    animation-delay: calc(
+        var(--engine-delay) * 7 + var(--additional-engine-delay)
+    );
     animation-fill-mode: both;
 }
 
@@ -174,7 +211,7 @@ body {
 }
 
 button {
-    font-family: 'Codec Pro';
+    font-family: "PT Mono";
     background-color: lightgray;
 }
 
@@ -204,7 +241,7 @@ button:active {
 
 .slide-down-animation {
     animation-name: slideDown;
-    animation-duration: .75s;
+    animation-duration: 0.75s;
     animation-timing-function: ease;
 }
 

@@ -83,6 +83,8 @@ s1e5_stream = conn.add_stream(getattr, s1e5, 'active')
 s1e6_stream = conn.add_stream(getattr, s1e6, 'active')
 s1e7_stream = conn.add_stream(getattr, s1e7, 'active')
 
+s1throttle = conn.add_stream(getattr, s1e1, 'throttle')
+
 # ------------------------------------------------------------------------------------------------
 #                          Functions to work with action groups
 # ------------------------------------------------------------------------------------------------
