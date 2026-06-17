@@ -7,8 +7,6 @@ from wtforms import SubmitField
 
 from waitress import serve
 
-from flask_socketio import SocketIO, emit
-
 try:
     from interface import kRPC_Interface as ship
 except:
