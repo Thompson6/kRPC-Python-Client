@@ -52,13 +52,13 @@
 
 <div class="s1-engines">
     <div class="s1-engine-outline fade-in"></div>
-    <button onclick="window.location.href = '{{ url_for('engine_page', stage=1, engine_number=1) }}' ; " class="s1-e1 s1-engine fade-in">1</button>
-    <button onclick="window.location.href = '{{ url_for('engine_page', stage=1, engine_number=2) }}' ; " class="s1-e2 s1-engine fade-in">2</button>
-    <button onclick="window.location.href = '{{ url_for('engine_page', stage=1, engine_number=3) }}' ; " class="s1-e3 s1-engine fade-in">3</button>
-    <button onclick="window.location.href = '{{ url_for('engine_page', stage=1, engine_number=4) }}' ; " class="s1-e4 s1-engine fade-in">4</button>
-    <button onclick="window.location.href = '{{ url_for('engine_page', stage=1, engine_number=5) }}' ; " class="s1-e5 s1-engine fade-in">5</button>
-    <button onclick="window.location.href = '{{ url_for('engine_page', stage=1, engine_number=6) }}' ; " class="s1-e6 s1-engine fade-in">6</button>
-    <button onclick="window.location.href = '{{ url_for('engine_page', stage=1, engine_number=7) }}' ; " class="s1-e7 s1-engine fade-in">7</button>
+    <button onclick="window.location.href = '{{ url_for('engine_page', stage=1, engine_number=1) }}' ; " class="s1-e1 s1-engine fade-in" id="1">1</button>
+    <button onclick="window.location.href = '{{ url_for('engine_page', stage=1, engine_number=2) }}' ; " class="s1-e2 s1-engine fade-in" id="2">2</button>
+    <button onclick="window.location.href = '{{ url_for('engine_page', stage=1, engine_number=3) }}' ; " class="s1-e3 s1-engine fade-in" id="3">3</button>
+    <button onclick="window.location.href = '{{ url_for('engine_page', stage=1, engine_number=4) }}' ; " class="s1-e4 s1-engine fade-in" id="4">4</button>
+    <button onclick="window.location.href = '{{ url_for('engine_page', stage=1, engine_number=5) }}' ; " class="s1-e5 s1-engine fade-in" id="5">5</button>
+    <button onclick="window.location.href = '{{ url_for('engine_page', stage=1, engine_number=6) }}' ; " class="s1-e6 s1-engine fade-in" id="6">6</button>
+    <button onclick="window.location.href = '{{ url_for('engine_page', stage=1, engine_number=7) }}' ; " class="s1-e7 s1-engine fade-in" id="7">7</button>
 </div>
 
 <div class="s2-telemetry slide-down">
@@ -109,6 +109,16 @@ async function updateTelemetry() {
 
     document.getElementById("s1-gforce").textContent =
         data.gforce.toFixed(6) + " g";
+
+    /*for (let i = 0; i < 7; i++) {
+        element = document.getElementById(String(i + 1))
+        if (data.s1engines[i] == true && !element.classList.contains('engine-on')) {
+            element.classList.add('engine-on');
+        }
+        if (data.s1engines[i] == false && element.classList.contains('engine-on')) {
+            element.classList.remove('engine-on');
+        }
+    }*/
 }
 
 setInterval(updateTelemetry, 0);
