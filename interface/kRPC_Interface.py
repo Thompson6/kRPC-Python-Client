@@ -67,6 +67,21 @@ total_air_temperature = conn.add_stream(getattr, flight_info, "total_air_tempera
 static_air_temperature = conn.add_stream(getattr, flight_info, "static_air_temperature")
 
 
+s1e1 = vessel.parts.with_tag("s1e1")[0].engine
+s1e2 = vessel.parts.with_tag("s1e2")[0].engine
+s1e3 = vessel.parts.with_tag("s1e3")[0].engine
+s1e4 = vessel.parts.with_tag("s1e4")[0].engine
+s1e5 = vessel.parts.with_tag("s1e5")[0].engine
+s1e6 = vessel.parts.with_tag("s1e6")[0].engine
+s1e7 = vessel.parts.with_tag("s1e7")[0].engine
+
+s1e1_stream = conn.add_stream(getattr, s1e1, 'active')
+s1e2_stream = conn.add_stream(getattr, s1e2, 'active')
+s1e3_stream = conn.add_stream(getattr, s1e3, 'active')
+s1e4_stream = conn.add_stream(getattr, s1e4, 'active')
+s1e5_stream = conn.add_stream(getattr, s1e5, 'active')
+s1e6_stream = conn.add_stream(getattr, s1e6, 'active')
+s1e7_stream = conn.add_stream(getattr, s1e7, 'active')
 
 # ------------------------------------------------------------------------------------------------
 #                          Functions to work with action groups

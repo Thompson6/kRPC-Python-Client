@@ -53,7 +53,15 @@ def telemetry():
         "altitude": ship.altitude(),
         "heading": ship.heading(),
         "pitch": ship.pitch(),
-        "gforce": ship.g_force()
+        "gforce": ship.g_force(),
+
+        "s1e1": ship.s1e1_stream(),
+        "s1e2": ship.s1e2_stream(),
+        "s1e3": ship.s1e3_stream(),
+        "s1e4": ship.s1e4_stream(),
+        "s1e5": ship.s1e5_stream(),
+        "s1e6": ship.s1e6_stream(),
+        "s1e7": ship.s1e7_stream(),
     }
 
     return jsonify(data)
@@ -85,14 +93,14 @@ def add_return_cookie(input):
     print("Set a return cookie")
     return response
 
-@socketio.on('set_engines')
-def broadcast_all_engines():
-    print("HEY WE GOT SOME ENGINES OVER HEREEEE!!!")
-    engines = []
-    for engine in range(7): # Stage hard coded to 1 bc we don't have stage 2 yet
-        status = ship.get_engine_status(1, engine+1)
-        engines.append(status)
-    emit('all_engines', engines, broadcast=True)
+# @socketio.on('set_engines')
+# def broadcast_all_engines():
+#     print("HEY WE GOT SOME ENGINES OVER HEREEEE!!!")
+#     engines = []
+#     for engine in range(7): # Stage hard coded to 1 bc we don't have stage 2 yet
+#         status = ship.get_engine_status(1, engine+1)
+#         engines.append(status)
+#     emit('all_engines', engines, broadcast=True)
 
 if __name__ == "__main__":
     socketio.run(app, host='0.0.0.0', port=5000)
