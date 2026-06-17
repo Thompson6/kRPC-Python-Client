@@ -51,13 +51,13 @@ def telemetry():
         "pitch": ship.pitch(),
         "gforce": ship.g_force(),
 
-        "s1e1": ship.s1e1_stream() and ship.s1throttle(),
-        "s1e2": ship.s1e2_stream() and ship.s1throttle(),
-        "s1e3": ship.s1e3_stream() and ship.s1throttle(),
-        "s1e4": ship.s1e4_stream() and ship.s1throttle(),
-        "s1e5": ship.s1e5_stream() and ship.s1throttle(),
-        "s1e6": ship.s1e6_stream() and ship.s1throttle(),
-        "s1e7": ship.s1e7_stream() and ship.s1throttle(),
+        "s1e1": ship.s1e1_stream() and ship.s1throttle() > 0,
+        "s1e2": ship.s1e2_stream() and ship.s1throttle() > 0,
+        "s1e3": ship.s1e3_stream() and ship.s1throttle() > 0,
+        "s1e4": ship.s1e4_stream() and ship.s1throttle() > 0,
+        "s1e5": ship.s1e5_stream() and ship.s1throttle() > 0,
+        "s1e6": ship.s1e6_stream() and ship.s1throttle() > 0,
+        "s1e7": ship.s1e7_stream() and ship.s1throttle() > 0,
     }
 
     return jsonify(data)
@@ -99,4 +99,4 @@ def add_return_cookie(input):
 #     emit('all_engines', engines, broadcast=True)
 
 if __name__ == "__main__":
-    serve(app, listen=f'*:{web_port}')
+    serve(app, listen=f'*:{web_port}', threads=16)
