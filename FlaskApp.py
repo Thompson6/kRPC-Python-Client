@@ -7,8 +7,6 @@ from wtforms import SubmitField
 
 from waitress import serve
 
-from flask_socketio import SocketIO, emit
-
 try:
     from interface import kRPC_Interface as ship
 except:
@@ -22,8 +20,6 @@ web_port = config["web_port"]
 
 app = Flask(__name__)
 app.config["SECRET_KEY"] = secret_key
-
-socketio = SocketIO(app)
 
 # User facing routes end with slashes
 @app.route("/dashboard/", methods=["GET", "POST"])
